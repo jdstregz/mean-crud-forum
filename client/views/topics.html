@@ -1,0 +1,61 @@
+<div ng-controller="TopicController">
+    <div class="jumbotron text-center">
+        <h1 ng-model="userComment.topic">{{ title }}</h1>
+        <p>{{ tagline }}</p>
+        <button class="btn btn-success" ng-click="createTopic()">Create Topic</button>
+    </div>
+    <div ng-hide="hideTopicBoxes">
+        <div class="form-group">
+                <label for="topic">Topic:</label>
+                <textarea class="form-control" rows="1" maxlength="75" ng-model="newTopic.title" required></textarea>
+        </div>
+        <div class="form-group">
+                <label for="category">Category:</label>
+                <textarea class="form-control" maxlength="25" rows="1" ng-model="newTopic.category" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-success" ng-disabled="disabled" ng-click="submitTopic()">Post</button>
+        <button class="btn btn-default" ng-click="cancelTopicCreate()">Back</button>
+    </div>
+    <div>
+        
+        <br>
+        <table class="table" ng-hide="close">
+            <tr ng-repeat="x in topics">
+                <td>{{x.title}}</td>
+                <td>{{x.category}}</td>
+                <td>
+                    <button class="btn btn-default" ng-click="getComments(x)">Open</button>
+                    <!--<button class="btn btn-info" ng-if="x.userId==currentUser._id">Edit</button> -->
+                    <!--<button class="btn btn-danger" ng-if="x.userId==currentUser._id">Delete</button>-->
+                </td>
+            </tr>
+        </table>
+        <div ng-hide="test">
+            <p>{{currentCommentEdit}}</p>
+            <div class="panel panel-default" ng-repeat="comment in comments">
+                <div class="panel-heading">{{ comment.username }}</div>
+                <div class="panel-body" ng-hide="editorDisabled">
+                    <p>{{ comment.message }}</p>
+                    <button class="btn btn-danger pull-right" ng-if="comment.userId==currentUser._id" ng-click="deleteComment(comment)">Delete</button>
+                    <button class="btn btn-default pull-right" ng-if="comment.userId==currentUser._id" ng-click="editComment(comment)">Edit</button>
+                    
+                </div>
+                <div class="form-group" ng-hide="editorEnabled" ng-if='comment._id==currentEdit'>
+                    <textarea class="form-control" rows="3" ng-model="updateComment.message"required>{{ comment.message }}</textarea>
+                    <button class="btn btn-info" ng-click="putComment(comment)">Update</button>
+                    <button class="btn btn-default" ng-click="cancelEdit()">Cancel</button>
+                </div>
+                
+            </div>
+            <div class="form-group">
+                <label for="comment">Comment:</label>
+                <textarea class="form-control" rows="5" id="comment" ng-model="userComment.message" required></textarea>
+            </div>
+             <button type="submit" class="btn btn-success" ng-disabled="disabled" ng-click="comment()">Post</button>
+            <button class="btn btn-default" ng-click="goBack()">Back</button>
+            <br>
+            <br>
+            <br>
+        </div>
+    </div>
+</div>

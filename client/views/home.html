@@ -1,0 +1,35 @@
+<div class="jumbotron text-center">
+    <h1>Example Forum</h1>
+
+    <p>{{ tagline }}</p>
+</div>
+<div>
+    <h2>Welcome, here's how this works.</h2>
+    <p>This forum is based on a MEAN (Mongodb, Express, Angular, Nodejs) stack.
+    Through the single-page angular UI, it is capable of creating users and forum topics. 
+    Within each topic, users can create/read/update/destroy comments. 
+    
+    <h2>Authentication</h2>
+    <p>The authentication system on the backend is a passport-local strategy. 
+    If all is proper, you shouldn't be able to read topics or comments if you are not logged in.
+    It should also prevent a user from updating or destroying another user's comment.</p>
+    </p>
+    <h2>Current Bugs</h2>
+    <p>
+        There are two minor bugs:<br>
+        1. Sometimes it takes more than one logout to actually logout a user. I'm not sure why that is.<br>
+        2. Sometimes when updating a comment, it does not dynamically change on the page when it should.
+         My hypothesis is that the update request takes longer to finalize in the database than the angular refresh.
+    </p>
+    <h2>Future Developments</h2>
+    <p>
+        The main purpose of this application is to learn how to create a basic MEAN/CRUD application from scratch
+         as well as to learn about security and authentication. Here are some of the things that will be updated in the future:
+         <br>
+         1. More forms of authentication along with local (facebook, google, twitter, github)<br>
+         2. Security updates<br>
+         3. Likes and dislikes on comments<br>
+         4. Number of comments on topic list for each topic.<br>
+         5. More to come!<br>
+    </p>
+</div>
